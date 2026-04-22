@@ -130,9 +130,18 @@ def upload_to_google_sheets(data, worksheet_name):
 # ==========================================
 today = datetime.now().strftime('%Y-%m-%d')
 
-# Students
-upload_to_google_sheets(fetch_paginated_data(URLS['students'], {"format": "json", "per_page": 100, "from": "2025-08-01", "to": today}, "Students"), "students")
+# Students (Updated with grade and year parameters)
+students_params = {
+    "format": "json", 
+    "per_page": 100, 
+    "grade[]": 4,   # Replace X with the Khalil Grade ID
+    "year[]": 16,    # Replace Y with the Khalil Year ID
+    "from": "2025-08-01", # Widened the date just in case
+    "to": today,
+    "field": "name"
+}
 
+upload_to_google_sheets(fetch_paginated_data(URLS['students'], students_params, "Students"), "students")
 # Applicants
 upload_to_google_sheets(fetch_paginated_data(URLS['applicants'], {"format": "json", "per_page": 100, "from": "2025-08-01", "to": today}, "Applicants"), "applicants")
 
