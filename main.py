@@ -134,8 +134,8 @@ today = datetime.now().strftime('%Y-%m-%d')
 students_params = {
     "format": "json", 
     "per_page": 100, 
- #  "grade[]": 5,   # Replace X with the Khalil Grade ID
- #  "year[]": 21,    # Replace Y with the Khalil Year ID
+    "grade[]": 5,   # Replace X with the Khalil Grade ID
+    "year[]": 21,    # Replace Y with the Khalil Year ID
     "from": "2026-04-01", # Widened the date just in case
     "to": today,
     "field": "name"
