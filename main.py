@@ -134,8 +134,8 @@ today = datetime.now().strftime('%Y-%m-%d')
 students_params = {
     "format": "json", 
     "per_page": 100, 
-    "grade[]": 4,   # Replace X with the Khalil Grade ID
-    "year[]": 16,    # Replace Y with the Khalil Year ID
+ #   "grade[]": 5,   # Replace X with the Khalil Grade ID
+#  "year[]": 21,    # Replace Y with the Khalil Year ID
     "from": "2025-08-01", # Widened the date just in case
     "to": today,
     "field": "name"
@@ -146,10 +146,10 @@ upload_to_google_sheets(fetch_paginated_data(URLS['students'], students_params, 
 upload_to_google_sheets(fetch_paginated_data(URLS['applicants'], {"format": "json", "per_page": 100, "from": "2025-08-01", "to": today}, "Applicants"), "applicants")
 
 # Installments
-upload_to_google_sheets(fetch_paginated_data(URLS['payments'], {"format": "json", "per_page": 150, "from": "2025-08-01", "to": today, "type": "installments", "status": "accepted"}, "Installments"), "installments")
+upload_to_google_sheets(fetch_paginated_data(URLS['payments'], {"format": "json", "per_page": 150, "from": "2026-04-01", "to": today, "type": "installments", "status": "accepted"}, "Installments"), "installments")
 
 # Cash
-upload_to_google_sheets(fetch_paginated_data(URLS['payments'], {"format": "json", "per_page": 100, "from": "2025-08-01", "to": today, "type": "invoices", "status": "accepted"}, "Cash"), "cash")
+upload_to_google_sheets(fetch_paginated_data(URLS['payments'], {"format": "json", "per_page": 100, "from": "2026-04-01", "to": today, "type": "invoices", "status": "accepted"}, "Cash"), "cash")
 
 # Sync Timestamp
 try:
